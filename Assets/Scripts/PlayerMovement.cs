@@ -1,33 +1,73 @@
 using UnityEngine;
+using TMPro; // Necesario para usar textos
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
-    public Transform cam; // Arrastra aquí la Main Camera
+    public Transform cam;
+
+    // VARIABLES DE UI
+    public TextMeshProUGUI textoPuntos; // Arrastra aquí tu "TextoPuntos"
+    public GameObject panelVictoria;    // Arrastra aquí tu "Panel" de victoria
+
+    private int latas = 0;
+    private int latasTotales;
+
+    void Start()
+    {
+        // Cuenta cuántas latas pusiste en el nivel automáticamente
+        latasTotales = GameObject.FindGameObjectsWithTag("Item").Length;
+        ActualizarTexto();
+    }
 
     void Update()
     {
-        // 1. Obtener inputs
+        // (Tu código de movimiento se mantiene igual)
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
-        // 2. Calcular dirección (independiente de la rotación actual)
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        // 3. Si nos estamos moviendo...
         if (direction.magnitude >= 0.1f)
         {
-            // Calcular el ángulo hacia donde mira la cámara + el input
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-
-            // Rotar al personaje inmediatamente hacia esa dirección
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
-
-            // Calcular la dirección de avance correcta
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-            // Mover usando Translate (sin CharacterController)
             transform.Translate(moveDir.normalized * speed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            latas++;
+            Destroy(other.gameObject);
+            ActualizarTexto();
+            verificarVictoria();
+        }
+    }
+
+    void ActualizarTexto()
+    {
+        // Actualiza el contador en pantalla
+        if (textoPuntos != null)
+        {
+            textoPuntos.text = "Latas: " + latas + " / " + latasTotales;
+        }
+    }
+
+    void verificarVictoria()
+    {
+        // Si juntamos todas las latas...
+        if (latas >= latasTotales)
+        {
+            if (panelVictoria != null)
+            {
+                panelVictoria.SetActive(true); // ¡Muestra el cartel de ganar!
+                // Opcional: Detener el juego
+                // Time.timeScale = 0f; 
+            }
+            Debug.Log("¡Juego Terminado!");
         }
     }
 }
