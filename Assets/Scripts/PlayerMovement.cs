@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     public Transform cam;
-
+   
     // VARIABLES DE UI
     public TextMeshProUGUI textoPuntos; // Arrastra aquí tu "TextoPuntos"
     public GameObject panelVictoria;    // Arrastra aquí tu "Panel" de victoria
@@ -33,7 +33,9 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             transform.Translate(moveDir.normalized * speed * Time.deltaTime, Space.World);
+          
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
