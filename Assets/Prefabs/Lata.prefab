@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1443173308392986627}
   - component: {fileID: 2569573994430322598}
   - component: {fileID: 309625390128243564}
+  - component: {fileID: 7555401132555903676}
   m_Layer: 0
   m_Name: Soda can C
   m_TagString: Untagged
@@ -89,6 +90,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7555401132555903676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255457712083468985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.8448516, b: 0, a: 1}
+  outlineWidth: 10.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5314683346059949979
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +120,7 @@ GameObject:
   - component: {fileID: 4065352609713982097}
   - component: {fileID: 1898190612273362057}
   - component: {fileID: 7549883969077476851}
+  - component: {fileID: 1736607908766592460}
   m_Layer: 0
   m_Name: Lata
   m_TagString: Item
@@ -203,3 +223,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1736607908766592460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314683346059949979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4bb51247a353c4781c7ec0359d464d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemFlotante
+  velocidadGiro: 50
+  amplitudFlote: 0.2
+  velocidadFlote: 1
