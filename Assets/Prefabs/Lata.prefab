@@ -235,6 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4bb51247a353c4781c7ec0359d464d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemFlotante
-  velocidadGiro: 50
-  amplitudFlote: 0.2
+  velocidadGiro: 100
+  amplitudFlote: 0.49
   velocidadFlote: 1
