@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private int latas = 0;
     private int latasTotales;
 
+    public AudioSource audioJugador;
+
     void Start()
     {
         // Cuenta cuántas latas pusiste en el nivel automáticamente
@@ -42,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+            if (audioJugador != null) audioJugador.Play();  
             latas++;
             Destroy(other.gameObject);
             ActualizarTexto();
